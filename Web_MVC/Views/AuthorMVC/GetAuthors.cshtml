@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Web_MVC.Models.AuthorViewModel>
+
+@{
+    ViewBag.Title = "GetAuthors";
+}
+
+<h2>GetAuthors</h2>
+
+<p>
+    @Html.ActionLink("Lista de Livros", "GetBooks","BookMVC")
+</p>
+
+<p>
+    @Html.ActionLink("Registrar novo autor", "CreateAuthor")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascimento)
+        </td>
+        <td>
+            @Html.ActionLink("Editar o autor", "EditAuthor", new { id = item.AuthorId }) |
+            @Html.ActionLink("Deletar o autor", "DeleteAuthor", new { id = item.AuthorId })|
+            @Html.ActionLink("Detalhes do autor", "DetailsAuthor", new { id = item.AuthorId })
+        </td>
+    </tr>
+}
+
+</table>
